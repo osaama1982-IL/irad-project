@@ -27,8 +27,8 @@ A full-stack weather application with user authentication built with React and N
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/weather-app.git
-   cd weather-app
+   git clone https://github.com/osaama1982-IL/osama-1.git
+   cd osama-1
    ```
 
 2. **Install dependencies**
@@ -64,7 +64,7 @@ A full-stack weather application with user authentication built with React and N
 ## Project Structure
 
 ```
-weather-app/
+osama-1/
 ├── backend/                 # Node.js/Express API
 │   ├── routes/             # API routes
 │   ├── .env.example        # Environment template
