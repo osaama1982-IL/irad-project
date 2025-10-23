@@ -1,0 +1,24 @@
+/* Very simple beginner CSS */
+#root {
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+.logo {
+  height: 80px;
+  margin-bottom: 1rem;
+}
+
+.card {
+  padding: 1rem;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  margin: 1rem auto;
+  max-width: 400px;
+}
+
+.read-the-docs {
+  color: #888;
+  font-size: 0.9rem;
+}
