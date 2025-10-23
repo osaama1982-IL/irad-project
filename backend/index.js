@@ -4,6 +4,7 @@ const path = require("path");
 const authRoutes = require("./routes/auth");
 const loginRouter = require('./routes/login');
 const authSessionRoutes = require('./routes/auth-session');
+const weatherService = require('./weatherService');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -36,13 +37,26 @@ app.use('/api/auth', authSessionRoutes);
 const frontendPath = path.join(__dirname, '../frontend/dist');
 app.use(express.static(frontendPath));
 
-app.get("/api/weather", (req, res) => {
-  res.json({
-    city: "Berlin",
-    temperature: 18,
-    condition: "Cloudy",
-    updatedAt: new Date()
-  });
+app.get("/api/weather", async (req, res) => {
+  try {
+    const city = req.query.city;
+    const weatherData = await weatherService.getCurrentWeather(city);
+    res.json(weatherData);
+  } catch (error) {
+    console.error('Weather API error:', error);
+    res.status(500).json({ error: 'Failed to fetch weather data' });
+  }
+});
+
+app.get("/api/weather/forecast", async (req, res) => {
+  try {
+    const city = req.query.city;
+    const forecastData = await weatherService.getWeeklyForecast(city);
+    res.json(forecastData);
+  } catch (error) {
+    console.error('Forecast API error:', error);
+    res.status(500).json({ error: 'Failed to fetch forecast data' });
+  }
 });
 
 app.get("/", (req, res) => {
